@@ -6,11 +6,23 @@
     <td>Qty</td>
     <td>Topping</td>
     <td>Price</td>
+    <td>Delete</td>
+    <td>Update</td>
   </tr>
   <tr>
     <td><%= @pizza_order.pretty_name() %></td>
     <td><%= @pizza_order.quantity %></td>
     <td><%= @pizza_order.topping %></td>
     <td>£<%= @pizza_order.total() %></td>
+    <td>
+      <form action="/pizza-orders/<%= @pizza_order.id %>/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
+    </td>
+    <td>
+      <form action="/pizza-orders/<%= @pizza_order.id %>/update" method="post">
+        <input type="submit" value="Update">
+      </form>
+    </td>
   </tr>
 </table>
