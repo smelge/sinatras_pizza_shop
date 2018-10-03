@@ -1,0 +1,20 @@
+<p>All Pizza Orders<hr></p>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Quantity</td>
+    <td>Topping</td>
+    <td>Price</td>
+    <td>View</td>
+  </tr>
+  <% for pizza_order in @pizzas %>
+    <tr>
+      <td><%= pizza_order.pretty_name() %></td>
+      <td><%= pizza_order.quantity %></td>
+      <td><%= pizza_order.topping %></td>
+      <td>£<%= pizza_order.total() %></td>
+      <td><a href="/pizza-orders/<%= pizza_order.id %>">View Order Details</a></td>
+    </tr>
+  <% end %>
+</table>
