@@ -10,23 +10,30 @@
     <td>Delete</td>
     <td>Update</td>
   </tr>
-  <% for pizza_order in @pizzas %>
+  <% order_total = 0
+    for pizza_order in @pizzas%>
     <tr>
       <td><%= pizza_order.pretty_name() %></td>
       <td><%= pizza_order.quantity %></td>
       <td><%= pizza_order.topping %></td>
-      <td>£<%= pizza_order.total() %></td>
+      <td>£<%= pizza_order.total()%></td>
+      <% order_total += pizza_order.total %>
       <td><a href="/pizza-orders/<%= pizza_order.id %>">View Order Details</a></td>
       <td>
         <form action="/pizza-orders/<%= pizza_order.id %>/delete" method="post">
-          <input type="submit" value="Delete">
+          <input class="interact interact-delete" type="submit" value="Delete">
         </form>
       </td>
       <td>
         <form action="/pizza-orders/<%= pizza_order.id %>/update" method="post">
-          <input type="submit" value="Update">
+          <input class="interact" type="submit" value="Update">
         </form>
       </td>
     </tr>
   <% end %>
+  <tr>
+    <td colspan="3">Total</td>
+    <td>£<%= order_total %></td>
+    <td colspan="3"></td>
+  </tr>
 </table>
